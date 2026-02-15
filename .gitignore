@@ -1,0 +1,93 @@
+# ===============================
+# Python / Virtual Environments
+# ===============================
+.venv/
+venv/
+ENV/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.ipynb_checkpoints/
+
+# ===============================
+# Jupyter / Notebooks
+# ===============================
+.notebook/
+.ipynb_checkpoints/
+
+# ===============================
+# GIS / Spatial Data (DO NOT COMMIT)
+# ===============================
+# Vector
+*.shp
+*.shx
+*.dbf
+*.prj
+*.cpg
+*.gpkg
+*.geojson
+*.gml
+*.kml
+*.kmz
+
+# Raster
+*.tif
+*.tiff
+*.img
+*.asc
+*.bil
+*.hdr
+*.aux.xml
+*.ovr
+
+# LiDAR
+*.las
+*.laz
+
+# ===============================
+# Project Data Directories
+# ===============================
+data_raw/
+data_processed/
+outputs/
+
+# ===============================
+# QGIS Project Files
+# ===============================
+*.qgz
+*.qgs
+*.qgd
+*.qml
+
+# ===============================
+# Logs / Temp
+# ===============================
+*.log
+*.tmp
+*.temp
+.cache/
+.tmp/
+
+# ===============================
+# OS / Editor Junk
+# ===============================
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# ===============================
+# Environment / Secrets
+# ===============================
+.env
+.env.*
+
+# ===============================
+# Archives
+# ===============================
+*.zip
+*.tar
+*.tar.gz
+*.7z
