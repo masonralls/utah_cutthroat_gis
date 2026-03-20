@@ -40,11 +40,11 @@ Data Preparation (Python)
 ## Exploratory Analysis
 Variable Distributions
 
-![alt text](image.png)
+![alt text](../figures/distributions.png)
 
 Correlation Between Predictors
 
-![alt text](image-1.png)
+![alt text](../figures/corr_matrx.png)
 
 - Weak correlations between predictors indicate low multicollinearity
 - Road density shows a negative relationship with elevation and slope
