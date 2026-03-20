@@ -1,100 +1,104 @@
 # Weber River Basin Cutthroat Trout Conservation GIS
 
-This project develops a terrain-driven Habitat Suitability Index (HSI) model for Bonneville Cutthroat Trout in the Weber River Basin, Utah.
+This project investigates how landscape characteristics influence human disturbance across a river network in the Weber River Basin, Utah. Using GIS-based feature engineering and statistical analysis, I quantified road density near stream reaches and explored how it relates to elevation, slope, and watershed structure.
 
-Using high-resolution elevation data and hydrologic analysis, stream reaches were segmented into 250m units and enriched with terrain-derived predictors to identify priority habitat corridors.
-
-The goal of this project is to demonstrate a reproducible spatial analysis workflow applicable to watershed-scale conservation planning.
-
-## Objectives
-- Build reach-level habitat and connectivity metrics
-- Identify priority stream segments for protection and restoration
-- Demonstrate reproducible conservation GIS workflows using QGIS + Python
+The goal is to better understand how infrastructure development interacts with topography and hydrology—an important consideration for aquatic habitat conservation
 
 ## Study Area
-- Weber River Basin (HUC8: 16020102), Northern Utah
-- Hydrologically connected stream network
-- Modeled at 250-meter reach scale
+
+![alt text](<../figures/Study Area Weber Basin.png>)
+
+The Weber River Basin is a mountainous watershed in northern Utah characterized by steep headwaters and developed valley corridors.
 
 ## Data Sources
 - USGS 3DEP 1/3 arc-second DEM (10m resolution)
-- Stream network (NHD-derived)
-- Basin boundary shapefile
+- Stream Network: Utah AGRC Hydrography Dataset
+- Roads: Utah Transportation Dataset
+- Elevation: Digital Elevation Model (DEM)
+- Derived Variables: Generated in QGIS using spatial analysis tools
 
-## Methods
-1. DEM Preprocessing
-- Clipped DEM to upper and lower Weber Basins
-- Reprojected the UTM (EPSG:26912)
-- Hydrologically conditioned DEM
-- Derived slope raster
-- Generated flow direction and flow accumulation rasters
+## Methodology
+GIS Processing (QGIS)
 
-2. Stream Segmentation 
-- Stream network splits into 250m reaches
-- Unique reach_id assigned to each segment
+- Generated 250 m buffers around each stream reach
+- Calculated total road length within each buffer
+- Derived road density (km/km²)
+- Computed zonal statistics:
+    - Mean elevation
+    - Mean slope
+    - Drainage area
 
-3. Raster-to-Reach Aggregation
-For each  250m reach, the following statistics were extracted:
-- Mean slope
-- Median slope
-- Standard deviation
-- IQR
-- Mean elevation
-- Elevation range
-- Variability metrics
-- Upstream Contributing Area (UCA) derived from flow accumulation raster
-- UCA converted to area units
-- UCA aggregated to reach level
+Data Preparation (Python)
 
-4. Habitat Suitability Index (HSI)
-An exploratory HSI was developed using normalized terrain predictors:
-- Moderae slope preferred
-- Mid-elevation preferred
-- Moderate UCA preferred
+- Exported processed dataset as GeoPackage
+- Log-transformed skewed variables:
+    - Drainage area
+    - Road density
 
-Predictors were scaled and combined into a composite index rangeing from low to high suitability.
+- Handled zero-road reaches appropriately
 
-Top 10% of reaches were identified as priority habitat.
+## Exploratory Analysis
+Variable Distributions
 
-## Key Outputs
-- slope_weber.tif
-- flow_acc_weber.tif
-- reaches_250m_id.gpkg
-- reach_slope_stats.gpkg
-- reach_elev_stats.gpkg
-- reach_area_stats.gpkg
-- Final reach dataset with HSI scores
-
-## Results
 ![alt text](image.png)
 
-The model identifies spatial clusters of high suitability habitat across the Weber Basin
+Correlation Between Predictors
 
 ![alt text](image-1.png)
 
-The top 10% of reaches represent potential conservation or restoration priority zones.
+- Weak correlations between predictors indicate low multicollinearity
+- Road density shows a negative relationship with elevation and slope
 
-## Tech Stack
-- QGIS (hydrologic processing & spatial analysis)
-- GRASS r.watershed
-- GDAL raster tools
-- Python (planned for modeling extension)
-- GeoPackage for data management
+Landscape Drivers of Disturbance
 
-## Future Improvements
-This project is designed as a foundation for more advanced habitat modeling. Planned next steps include:
+![alt text](<../figures/Elevation Map.png>)
 
-- Logistic regression modeling using presence/absence data
-- Literature-informed weighting of predictors
-- Incorporation of land cover and temperature proxies
-- Transition to a fully reproducible Python-based spatial modeling workflow
+- Road density decreases with elevation
+- Higher disturbance is concentrated in accessible, lower-elevation terrain
+- Headwater streams exhibit lower levels of infrastructure development
 
-## Why this project matters
-Watershed-scale habitat modeling supports:
+Spatial Distribution of Road Disturbance
 
-- Conservation prioritization
-- Barrier removal planning
-- Restoration targeting
-- Climate resilience planning
+![alt text](<../figures/rd dens map.png>)
 
-This project demonstrates an end-to-end geospatial workflow for environmental decision support
+- Road infrastructure is concentrated along major valley corridors
+- High-elevation headwaters remain relatively undisturbed
+- Spatial patterns align with terrain accessibility and watershed structure
+
+Key Insights
+
+- Road density is strongly influenced by elevation and slope
+- Flatter, lower-elevation regions experience higher human disturbance
+- High-elevation headwaters represent relatively intact habitat zones
+- Drainage area is largely independent of disturbance at this scale
+
+## Modeling (In Progress)
+
+A predictive modeling component will be added using a Random Forest approach to quantify the relative importance of landscape variables in explaining road disturbance patterns.
+
+Planned steps:
+
+- Train/test split
+- Random Forest regression
+- Feature importance analysis
+- Model evaluation (R², RMSE)
+
+## Tools & Technologies
+
+- QGIS — spatial analysis and feature engineering
+- Python — GeoPandas, Pandas, NumPy, Matplotlib, Seaborn
+- Git/GitHub — version control and documentation
+
+## Future Work
+
+- Incorporate ecological response variables (e.g., trout presence)
+- Extend model to habitat suitability prediction
+- Integrate land cover and climate datasets
+- Analyze temporal changes in disturbance
+
+## Author
+
+Mason Ralls
+Applied Mathematics | GIS & Environmental Data Analytics
+
+This project reflects my interest in applying quantitative and geospatial methods to conservation and natural resource management.
