@@ -1,4 +1,4 @@
-# Weber River Basin Cutthroat Trout Conservation GIS
+## Road Disturbance Across the Weber River Basin
 
 This project investigates how landscape characteristics influence human disturbance across a river network in the Weber River Basin, Utah. Using GIS-based feature engineering and statistical analysis, I quantified road density near stream reaches and explored how it relates to elevation, slope, and watershed structure.
 
