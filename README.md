@@ -41,6 +41,10 @@ Data Preparation (Python)
 Variable Distributions
 
 ![alt text](figures/distributions.png)
+- Log-drainage area is skewed even after the transformation because the area of study has many small tributaries and few large mainstream reaches. This pattern is expected in river networks according to the power_law structure. The variable is usable.
+- Log-road density has a spike near zero due to the high occurence of reaches that have no nearby roads in the buffer zone. The distribution outside the spike is smooth. This pattern is common in ecological disturbance variables. Thus the variable is usable
+- The mean slope distribution shows that most reaches lie between 0 and 15 degrees. This is normal for mountainous basins like the upper and lower weber basins. A log transformation will not be necessary in order for this variable to be useful.
+- Mean elevation shows a bell-like distribution cebtered around 2000m, making it almost ideal for regression. No transformation needed.
 
 Correlation Between Predictors
 
