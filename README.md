@@ -6,7 +6,7 @@ The goal is to better understand how infrastructure development interacts with t
 
 ## Study Area
 
-![alt text](<../figures/Study Area Weber Basin.png>)
+![alt text](<figures/Study Area Weber Basin.png>)
 
 The Weber River Basin is a mountainous watershed in northern Utah characterized by steep headwaters and developed valley corridors.
 
@@ -40,18 +40,18 @@ Data Preparation (Python)
 ## Exploratory Analysis
 Variable Distributions
 
-![alt text](../figures/distributions.png)
+![alt text](figures/distributions.png)
 
 Correlation Between Predictors
 
-![alt text](../figures/corr_matrx.png)
+![alt text](figures/corr_matrx.png)
 
 - Weak correlations between predictors indicate low multicollinearity
 - Road density shows a negative relationship with elevation and slope
 
 Landscape Drivers of Disturbance
 
-![alt text](<../figures/Elevation Map.png>)
+![alt text](<figures/Elevation Map.png>)
 
 - Road density decreases with elevation
 - Higher disturbance is concentrated in accessible, lower-elevation terrain
@@ -59,7 +59,7 @@ Landscape Drivers of Disturbance
 
 Spatial Distribution of Road Disturbance
 
-![alt text](<../figures/rd dens map.png>)
+![alt text](<figures/rd dens map.png>)
 
 - Road infrastructure is concentrated along major valley corridors
 - High-elevation headwaters remain relatively undisturbed
